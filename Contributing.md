@@ -1,7 +1,6 @@
 # Contributing
 
-Persons contributing to this project agree to the [code of conduct](./CONDUCT.md) and agree to the 
-potential redistribution of their code under our license.
+Persons contributing to this project agree to the [code of conduct](https://github.com/UBC-MDS/BlackBox_R/blob/master/Conduct.md) and agree to the potential redistribution of their code under our license.
 
 ## How to contribute
 

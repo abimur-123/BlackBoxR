@@ -6,19 +6,24 @@
 
 ### Summary
 
-Our package is aimed towards novice (ML/programming language) users who can get a birdseye view of their dataset, and possible models which could be used for a given problem.
+The Bayesian vs Frequentist approach is more of a philosophical debate which this package will not delve into. This package attempts at breaking down the understanding and the underlying assumptions of the 2 approaches and how they compare. The package will run a significance analysis using both approaches based on data provided by the user.
+
+This package is aimed at users who are attempting to familiarize themselves with the Bayesian/Frequentist approach(although I'm guessing it will be more Bayesian). This package can elucidate the difference in approaches and will attempt to help the user get a basic high-level understanding of both approaches and how they should proceed to carry out further analysis.
 
 
 ### Functions
 
-|Function Name|Result|
-|--|:----:|
-|getEDA()|return the summary of dataset provided by the user. This could include graphs and tables.|
-|getModelSummary()|return the summary of different models (classification/regression) used to evaluate the given problem.|
-|getResources()|returns resources for the user to investigate more about the different models used on their dataset.|
-|getCodeSummary()|returns code snippet for the best model evaluated. |
+Further analysis:
+
+getCredibleInterval() : Perform Monte-Carlo estimation to obtain credible intervals
+
+getConfidenceInterval() : Obtain confidence interval for the result
+
+performABtest() : Run A\B test using Bayesian statistics
+
+performHypothesistest() : Run a Hypothesis test using Bootstrapping/Permutation tests
 
 
 ### Similar Packages
 
-The [caret](http://topepo.github.io/caret/index.html) package in R is a library that helps streamline the model selection and prediction problem. Our package would utilize functions from this package to help visualize and compare the predictive power of various models for a given dataset.
+No such packages as of now. We are the original ones. #FirstNeverFollows #TrendSetters

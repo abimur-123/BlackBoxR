@@ -8,7 +8,7 @@ getConfidenceInterval<-function(df){
   #dataframe:first column is name(string), second column is score(numeric)
   #
   #Return:
-  #dataframe
+  #dataframe(three columns:name,lower_bound,upper_bound)
   #
   return(NULL)
   

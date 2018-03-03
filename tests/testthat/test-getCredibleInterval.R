@@ -23,5 +23,11 @@ test_that('the output interval is valid',{
   expect_true(getCredibleInterval(df)$upper<=max(df$score))
 })
 
+test_that('the output interval is correct',{
+  expected_interval<-quantile(df$score,c(.025,.975))
+  expect_equal(getCredibleInterval(df)$lower,expected_interval[1])
+  expect_equal(getCredibleInterval(df)$upper,expected_interval[2])
+})
+
 
   

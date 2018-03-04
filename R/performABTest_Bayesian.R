@@ -1,7 +1,7 @@
-#performABtest_Baye
+#performABtest_Bayesian
 
 #' @export
-performABtest_Baye <- function(data){
+performABtest_Bayesian <- function(data){
   #perform AB testing using the Bayesian approach
   #
   #Args:
@@ -10,6 +10,7 @@ performABtest_Baye <- function(data){
   #Return:
   #results containing significance of tests
   #
-  return(NULL)
-  
+  dummy_p_value <- list(`p.value` = -2)
+  return(dummy_p_value)
+
 }

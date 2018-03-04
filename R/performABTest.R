@@ -1,7 +1,7 @@
 #performABtest_freq
 
 #' @export
-performABtest_freq <- function(data){
+performABtest <- function(data){
   #perform AB testing using the frequentist approach
   #
   #Args:
@@ -10,6 +10,7 @@ performABtest_freq <- function(data){
   #Return:
   #results containing significance of tests
   #
-  return(NULL)
-  
+  dummy_p_value <- 1.5 #for testing purpose
+  return(dummy_p_value)
+
 }

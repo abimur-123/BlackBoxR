@@ -1,3 +1,6 @@
+# Bayesian and Frequentist approach using BlackBoxR
+[![Build Status](https://travis-ci.org/UBC-MDS/BlackBoxR.svg?branch=master)](https://travis-ci.org/UBC-MDS/BlackBoxR)
+
 ### Contributors
 
 1. Siddharth Arora(@sarora)

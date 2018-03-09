@@ -29,3 +29,4 @@ getCredibleInterval<-function(vector,prior_dis,sample_dis){
   return(c(lower,upper))
   
 }
+

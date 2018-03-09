@@ -6,9 +6,9 @@ sample<-c(1,3,4,5)
 
 #check valid input
 test_that("check if input is in correct format",{
-  expect_error(getConfidenceInterval(1,2),'Wrong format for input')
-  expect_error(getConfidenceInterval(), 'need to pass in a dataframe')
-  expect_error(getConfidenceInterval(c()),'blank vector')
+  expect_error(getConfidenceInterval(1,2),'unused argument (2)',fixed=TRUE)
+  expect_error(getConfidenceInterval(), 'argument "vector" is missing, with no default',fixed=TRUE)
+  expect_warning(getConfidenceInterval(c()))
 })
 
 test_that('vector has at least 1 observation',{
@@ -34,6 +34,6 @@ test_that('the output interval is valid',{
 test_that('the output interval is correct',{
   expected_lower<-1.576331
   expected_upper<-4.923668
-  expect_true(abs(getConfidenceInterval(sample)[1]-expected_lower)<1e-10)
-  expect_true(abs(getConfidenceInterval(sample)[2]-expected_upper)<1e-10)
+  expect_true(abs(getConfidenceInterval(sample)[1]-expected_lower)<1e-5)
+  expect_true(abs(getConfidenceInterval(sample)[2]-expected_upper)<1e-5)
 })

@@ -16,8 +16,8 @@ getConfidenceInterval<-function(vector){
   xbar<-mean(vector)
   n<-length(vector)
   sd<-sd(vector)
-  lower<-xbar-1.96*sd/sqrt(n)
-  upper<-xbar+1.96*sd/sqrt(n)
+  lower<-xbar-1.96*(sd/sqrt(n))
+  upper<-xbar+1.96*(sd/sqrt(n))
 
   return(c(lower,upper))
   

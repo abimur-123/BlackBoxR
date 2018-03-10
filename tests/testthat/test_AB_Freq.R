@@ -1,30 +1,31 @@
 context('performABTest.R')
 
 test_that("check if input is in correct format",{
-  expect_error(performABTest(1,2),'Wrong format for input')
-  expect_error(performABTest(NULL), 'need to pass in a dataframe')
-})
-
-test_that('dataframe has more than 2 observations for AB testing',{
   df<-data.frame(name=rep(c('A','B'),1),events=rbinom(2,1,0.5))
-  expect_true(nrow(df) > 2)
-})
 
-test_that('the first column of dataframe is categorical and can have only 2 levels(event a/event b)',{
-  df<-data.frame(name=rep(c('A','B','C'),10),events=rnorm(30,2,0.5))
-  expect_true(typeof(df[,1]) == 'integer')
+  expect_error(performABTest(NULL), "Need to pass in a dataframe")
+  expect_error(performABTest(1,0.05),"Parameter inp_data is not a data frame")
+  expect_error(performABTest(df,1.5),"False positive rate cannot be greater than 1 or less than 0")
+  expect_error(performABTest(df,-1.5),"False positive rate cannot be greater than 1 or less than 0")
+  expect_error(performABTest(df,0.05),"Need at least 20 rows as input")
+
   df <- data.frame(name=rep(c('A','B','C'),5),events=rbinom(15,1,0.5))
-  expect_true(nlevels(df[,1]) == 2)
+  expect_error(performABTest(df,0.05), "Number of events cannot have more than 2 unique values")
+
+  df<-data.frame(name=rep(c('A','B'),10),events=rnorm(20,2,0.5))
+  expect_error(performABTest(df,0.05), "The event column cannot have more than 2 levels for AB testing")
 })
 
-test_that('the second column of dataframe is categorical and can have only 2 levels(Yes/No)',{
-  df<-data.frame(name=rep(c('A','B','C'),10),events=rnorm(30,2,0.5))
-  expect_true(typeof(df[,2])=='integer')
-  df<-data.frame(name=rep(c('A','B','C'),10),events=rbinom(30,2,0.5))
-  expect_true(nlevels(df[,2]) == 2)
-})
+test_that("Check if output is valid",{
+  df<-data.frame(name=rep(c('A','B'),100),events=rbinom(200,1,0.5))
+  op <- performABTest(df,0.05)
+  p_val <- op[[1]]$p_val
 
-test_that('p-value is less than or equal to 1 and greater than 0',{
-  expect_true(performABTest(df)$`p.value`> 0)
-  expect_true(performABTest(df)$`p.value`< 1)
+
+  expect_length(op,3) #Check if op returns list of length 3
+
+  #Check if p-value lies between 0 and 1
+  output_check_p_val <- ifelse((p_val > 0 & p_val <= 1),TRUE,FALSE)
+  expect_that(output_check_p_val,is_true())
+
 })

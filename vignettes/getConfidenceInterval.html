@@ -14,7 +14,7 @@
 
 <meta name="date" content="2018-03-09" />
 
-<title>get 95% credible interval (Bayesian Approach)</title>
+<title>get 95% confidence interval (frequentist approach)</title>
 
 
 
@@ -30,16 +30,16 @@
 
 
 
-<h1 class="title toc-ignore">get 95% credible interval (Bayesian Approach)</h1>
+<h1 class="title toc-ignore">get 95% confidence interval (frequentist approach)</h1>
 <h4 class="author"><em>Vinver Guan</em></h4>
 <h4 class="date"><em>2018-03-09</em></h4>
 
 
 
-<p>This function aims to get 95% credible interval, which is used bayesian approach to analyze your data. We just handle normal distribution for prior distribution, also , we assume your input data follows normal distribution.</p>
+<p>This function aims to get 95% confidence interval, which is used frequentist approach to analyze your data. We assume your input data follows normal distribution.</p>
 <p>Below is an example:</p>
 <pre><code>sample&lt;-rnorm(5,mean=3,sd=0.9)
-getCredibleInterval(sample,c(4,1),c(3,0.9))</code></pre>
+getConfidceInterval(sample)</code></pre>
 
 
 

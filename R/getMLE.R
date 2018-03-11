@@ -5,9 +5,9 @@
     #compute the log likelihood of data given the distribution
     #
     #Args:
-    #distribution: type of distribution of the data. for example (binomial, bernoulli, poisson). Support for 2 as of now.
+    #distribution: type of distribution of the data. for example (bernoulli, poisson). Support for 2 as of now.
     #column: the column is a vector of numeric data over which we perform the maximum likelihood
-    #Return: the log likelihood of the data.For example, mean for poisson, probability for binomial
+    #Return: the log likelihood of the data.For example, mean for poisson, probability for bernoulli
     #
     #
 
@@ -18,16 +18,17 @@
   if (typeof(distribution) == "character" & (is.atomic(column) == FALSE | length(column)==1)) stop("Wrong format for column input;vector of length > 1 expected")
   if (typeof(distribution) != "character" & (is.atomic(column) == TRUE | length(column)>1)) stop("Wrong format for distribution input;string expected")
   if (typeof(distribution) == "character" & (is.atomic(column) == TRUE & length(column)>1 & !is.numeric(column))) stop("Wrong type of vector provided; numeric vector type expected")
-  if(xor(tolower(distribution) != "poisson",tolower(distribution) == "binomial") & is.atomic(is.atomic(column) == TRUE)) stop("Input values for distribution can only take in values; Binomial and Poisson")
+  if(xor(tolower(distribution) != "poisson",tolower(distribution) == "bernoulli") & is.atomic(is.atomic(column) == TRUE)) stop("Input values for distribution can only take in values; Bernoulli and Poisson")
   if (typeof(distribution) == "character" & (is.atomic(column) == TRUE & length(column)>1 & is.numeric(column)) & !isTRUE(all(column == floor(column))) & isTRUE(all(column>=0)) ) stop("Column vector must only contain integer values")
   if (typeof(distribution) == "character" & (is.atomic(column) == TRUE & length(column)>1 & is.numeric(column)) & !isTRUE(all(column == floor(column))) & !isTRUE(all(column>=0))) stop("Column vector must only contain positive integer values")
 
 
-  if (tolower(distribution) == "binomial"){
+
+  if (tolower(distribution) == "bernoulli"){
 
     possible.p <- seq(0, 1, by = 0.001)
 
-    likelihood.results <- optimize(function(p) {log.likelihood.binomial(column, p)},
+    likelihood.results <- optimize(function(p) {log.likelihood.bernoulli(column, p)},
                                    interval = c(0, 1),
                                    maximum = TRUE)
     return(likelihood.results$maximum)
@@ -44,7 +45,7 @@
   }
 
 
-  log.likelihood.binomial <- function(sequence, p)
+  log.likelihood.bernoulli <- function(sequence, p)
   {
     log.likelihood <- 0
 

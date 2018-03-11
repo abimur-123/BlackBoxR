@@ -16,16 +16,48 @@ This package is aimed at users who are attempting to familiarize themselves with
 
 ### Functions
 
-getCredibleInterval() : Perform Monte-Carlo estimation to obtain credible intervals
+getCredibleInterval(x,prior\_dis,sample\_dis) :   
+**Purpose:** obtain credible intervals using Bayesian approach(we now just accpet normal distribution data, may accept more distribution in future )  
 
-getConfidenceInterval() : Obtain confidence interval for the result
+**Args:**   
+x, a numeric vector  
+prior\_dis, a numeric vector  
+sample\_dis, a numeric vector 
 
+**Returns:**   
+numeric vector with length 2
+
+**Example**   
+  
+```
+sample<-rnorm(5,mean=3,sd=1)
+getCredibleInterval(sample,c(2,1),c(3,1))
+```
+*******
+getConfidenceInterval(x) :   
+
+**Purpose:** Obtain confidence interval for the result(we now just accpet normal distribution data, may accept more distribution in future) 
+
+**Args:**   
+x, a numeric vector  
+
+
+**Returns:**   
+numeric vector with length 2
+
+**Example**   
+  
+```
+sample<-rnorm(5,mean=2, sd =0.98)
+getConfidenceInterval(sample)
+```
+******
 performABtest() : Run A\B test using the Frequentist approach
-
+*****
 performABtest_Bayesian() : Run A\B test using the Bayesian approach
-
+****
 getMAP(): Get Maximum a Priori estimate for the parameters for a given distribution.
-
+*****
 getMLE(): Get maximum likelihood value of the parameter for a given distribution.
 
 

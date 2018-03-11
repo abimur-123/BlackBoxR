@@ -23,7 +23,7 @@ getCredibleInterval() : Perform Monte-Carlo estimation to obtain credible interv
 
 getConfidenceInterval() : Obtain confidence interval for the result
 
-performABtest_Freq() : Run A\B test using the Frequentist approach
+performABTest() : Run A\B test using the Frequentist approach
 
 getMLE(): Get maximum likelihood value of the parameter for a given distribution.
 
@@ -56,7 +56,7 @@ the log likelihood of the data.For example, mean for poisson, probability for be
 
 ```
 ```
-performABtest_Freq(data,alpha = 0.05)
+performABTest(data,alpha = 0.05)
 
 *Purpose*: Performs A/B testing based on the data. Uses Fisher's exact test or Chi-square based on the size of the data
 

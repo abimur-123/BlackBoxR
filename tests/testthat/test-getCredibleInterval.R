@@ -1,35 +1,39 @@
 context('getCredibleInterval.R')
 
 
-#sample dataframe
-df<-data.frame(name=rep('A',4),score=rbeta(4,3,2))
+#sample 
+set.seed(1)
+sample<-rnorm(5,mean=4,sd=1)
 
 
 #check valid input
 test_that("check if input is in correct format",{
-  expect_error(getCredibleInterval(1,2),'Wrong format for input')
-  expect_error(getCredibleInterval(), 'need to pass in a dataframe')
+  expect_error(getCredibleInterval(1,2),'argument "sample_dis" is missing, with no default',fixed=TRUE)
+  expect_error(getCredibleInterval(), 'argument "prior_dis" is missing, with no default',fixed=TRUE)
+  expect_error(getCredibleInterval(sample,c(5,3)), 'sample_dis" is missing, with no default',fixed=TRUE)
 })
 
-test_that('dataframe has at least 1 observation',{
-  expect_true(nrow(df)>0)
+test_that('vector has at least 1 observation',{
+  expect_true(length(sample)>0)
 })
 
-test_that('the second column of dataframe is numeric',{
-  expect_true(typeof(df[,2])=='double'|typeof(df[,2])=='integer')
+test_that('the vector is numeric',{
+  expect_true(typeof(sample)=='double'|typeof(sample)=='integer')
 })
 
 
 #check valid output
-test_that('the output interval is valid',{
-  expect_true(getCredibleInterval(df)$lower>=min(df$score))
-  expect_true(getCredibleInterval(df)$upper<=max(df$score))
+test_that('the output has two elements only',{
+  expect_equal(length(getCredibleInterval(sample,c(3,1),c(4,1))),2)
 })
 
+
+
 test_that('the output interval is correct',{
-  expected_interval<-quantile(df$score,c(.025,.975))
-  expect_equal(getCredibleInterval(df)$lower,expected_interval[1])
-  expect_equal(getCredibleInterval(df)$upper,expected_interval[2])
+  expected_lower<-2.584653
+  expected_upper<-4.544617
+  expect_true(abs(getCredibleInterval(sample,c(3,1),c(4,1))[1]-expected_lower)<1e-5)
+  expect_true(abs(getCredibleInterval(sample,c(3,1),c(4,1))[2]-expected_upper)<1e-5)
 })
 
 

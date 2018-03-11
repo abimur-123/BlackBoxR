@@ -1,15 +1,25 @@
-#getConfidenceInterval
-
+#' compute 95% confidence interval (frequentist approach)
+#' assume the input samples follow normal distribution
+#'
+#' @param vector a numeric vector
+#'
+#' @return vector a numeric vector with two elements only
+#' 
+#' @examples 
+#' 
+#' #example with toy samples
+#' sample<-c(1,2,3,4,3,2,6)
+#' getConfidenceInterval(sample)
+#' 
 #' @export
-getConfidenceInterval<-function(df){
-  #compute 95% confidence interval (frequentist approach)
-  #
-  #Args:
-  #dataframe:first column is name(string), second column is score(numeric)
-  #
-  #Return:
-  #dataframe(three columns:name,lower_bound,upper_bound)
-  #
-  return(NULL)
+getConfidenceInterval<-function(vector){
+  xbar<-mean(vector)
+  n<-length(vector)
+  sd<-sd(vector)
+  lower<-xbar-1.96*(sd/sqrt(n))
+  upper<-xbar+1.96*(sd/sqrt(n))
+
+  return(c(lower,upper))
   
 }
+

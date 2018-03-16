@@ -3,6 +3,7 @@
 #' @export
 library(ggplot2)
 library(dplyr)
+
 performABTest <- function(inp_data, alpha = 0.05){
   # perform AB testing using the frequentist approach. The method chosen is based on
   # number of rows in the input data frame.

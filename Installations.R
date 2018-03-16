@@ -12,3 +12,4 @@
 
 install.packages("ggplot2")
 install.packages("knitr")
+install.packages("dplyr")

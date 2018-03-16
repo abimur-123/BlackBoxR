@@ -6,14 +6,3 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: r
-dist: trusty
-sudo: false
-
-branches:
-  only:
-    - master
-
-cache:
-  packages: yes
-  directories:
-    - $HOME/bin

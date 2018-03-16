@@ -10,4 +10,4 @@
 #       Load necessary dependancies, if not previously installed            #
 #############################################################################
 
-devtools::install_github("tidyverse/ggplot2")
+install.packages("ggplot2")

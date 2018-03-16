@@ -21,11 +21,9 @@ vignette: >
 ```
 getCredibleInterval() : Perform Monte-Carlo estimation to obtain credible intervals
 
-
 getConfidenceInterval() : Obtain confidence interval for the result
 
-
-performABtest() : Run A\B test using the Frequentist approach
+performABTest() : Run A\B test using the Frequentist approach
 
 getMLE(): Get maximum likelihood value of the parameter for a given distribution.
 
@@ -38,10 +36,6 @@ getMAP(): Get Maximum a Priori estimate for the parameters for a given distribut
 
 ```
 
-
-
-
-
 ## Example Usage
 
 
@@ -50,7 +44,7 @@ getMLE(distribution,column)
 
 *Purpose*: compute the log likelihood of data given the distribution
 
-*Args*: 
+*Args*:
 
 distribution: type of distribution of the data. for example (bernoulli, bernoulli). Support for 2 as of now.
 
@@ -60,8 +54,25 @@ column: the column is a vector of numeric data over which we perform the maximum
 
 the log likelihood of the data.For example, mean for poisson, probability for bernoulli
 
-
 ```
+```
+performABTest(data,alpha = 0.05)
+
+*Purpose*: Performs A/B testing based on the data. Uses Fisher's exact test or Chi-square based on the size of the data
+
+*Args*:
+
+data - input dataframe consisting of A and B events and occurance of events
+
+alpha - false positive rate
+
+*Returns*
+
+p-value indicating significance
+Graph displaying the change in p-values over trials
+Method used to compute p-value
+```
+
 
 Also a quote using `>`:
 

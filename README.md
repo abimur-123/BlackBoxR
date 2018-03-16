@@ -22,13 +22,13 @@ getCredibleInterval(x,prior\_dis,sample\_dis) :
 **Args:**   
 x, a numeric vector  
 prior\_dis, a numeric vector  
-sample\_dis, a numeric vector 
+sample\_dis, a numeric vector
 
 **Returns:**   
 numeric vector with length 2
 
 **Example**   
-  
+
 ```
 sample<-rnorm(5,mean=3,sd=1)
 getCredibleInterval(sample,c(2,1),c(3,1))
@@ -36,7 +36,7 @@ getCredibleInterval(sample,c(2,1),c(3,1))
 *******
 getConfidenceInterval(x) :   
 
-**Purpose:** Obtain confidence interval for the result(we now just accpet normal distribution data, may accept more distribution in future) 
+**Purpose:** Obtain confidence interval for the result(we now just accpet normal distribution data, may accept more distribution in future)
 
 **Args:**   
 x, a numeric vector  
@@ -46,16 +46,39 @@ x, a numeric vector
 numeric vector with length 2
 
 **Example**   
-  
+
 ```
 sample<-rnorm(5,mean=2, sd =0.98)
 getConfidenceInterval(sample)
 ```
-******
-performABtest() : Run A\B test using the Frequentist approach
-*****
-performABtest_Bayesian() : Run A\B test using the Bayesian approach
-****
+
+### AB Testing
+
+#### Frequentist approach
+
+A/B testing is an experiment with 2 versions - A and B. It is a two sample hypothesis testing which compares the subject's response to 2 versions of an entity(like a website).
+
+##### Function
+`performABTest(data,alpha = 0.05)`
+
+**Example**   
+
+```
+df<-data.frame(name=rep(c('A','B'),100),events=rbinom(200,1,0.5))
+op <- performABTest(df,0.05)
+```
+*******
+
+##### Parameters
+- data: input dataframe with 2 columns: name and event. Name consists of the A and B values one is trying to test and event consists of the outcome of the event(0 or 1).
+- alpha: This defines the false positive rate while testing. Default value is **0.05**
+
+#### Bayesian approach
+
+This is work in Progress
+
+### MLE vs MAP
+
 getMAP(): Get Maximum a Priori estimate for the parameters for a given distribution.
 *****
 getMLE(): Get maximum likelihood value of the parameter for a given distribution.

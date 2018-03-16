@@ -13,3 +13,5 @@
 install.packages("ggplot2")
 install.packages("knitr")
 install.packages("dplyr")
+install.packages("testthat")
+install.packages("rmarkdown")

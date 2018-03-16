@@ -2,7 +2,6 @@
 
 #' @export
 library(ggplot2)
-library(dplyr)
 
 performABTest <- function(inp_data, alpha = 0.05){
   # perform AB testing using the frequentist approach. The method chosen is based on
@@ -73,12 +72,12 @@ performABTest <- function(inp_data, alpha = 0.05){
 
 
   #create plot of p-values
-  p_val_plot <-  ggplot2::ggplot(op, aes(x = index, y = p_val)) +
-    ggplot2::geom_line() +
-    ggplot2::geom_hline(aes(yintercept = alpha),color = "red") +
-    ggplot2::scale_y_continuous(name = "p-value", limits = c(0,1)) +
-    ggplot2::scale_x_continuous(name = "Observed data points") +
-    ggplot2::annotate("text", label = paste("Alpha =",alpha), x = size - size/10, y = alpha + 0.05, color = "black")
+  p_val_plot <- ggplot(op, aes(x = index, y = p_val)) +
+    geom_line() +
+    geom_hline(aes(yintercept = alpha),color = "red") +
+    scale_y_continuous(name = "p-value", limits = c(0,1)) +
+    scale_x_continuous(name = "Observed data points") +
+    annotate("text", label = paste("Alpha =",alpha), x = size - size/10, y = alpha + 0.05, color = "black")
 
   return(list(tail(op,1),p_val_plot,method))
 

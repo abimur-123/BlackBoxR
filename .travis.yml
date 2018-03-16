@@ -6,5 +6,6 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: r
+warnings_are_errors: false
 install:
-  - install.packages("ggplot2")
+  - Rscript Installations.R

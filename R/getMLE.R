@@ -21,6 +21,7 @@
   if(xor(tolower(distribution) != "poisson",tolower(distribution) == "bernoulli") & is.atomic(is.atomic(column) == TRUE)) stop("Input values for distribution can only take in values; Bernoulli and Poisson")
   if (typeof(distribution) == "character" & (is.atomic(column) == TRUE & length(column)>1 & is.numeric(column)) & !isTRUE(all(column == floor(column))) & isTRUE(all(column>=0)) ) stop("Column vector must only contain integer values")
   if (typeof(distribution) == "character" & (is.atomic(column) == TRUE & length(column)>1 & is.numeric(column)) & !isTRUE(all(column == floor(column))) & !isTRUE(all(column>=0))) stop("Column vector must only contain positive integer values")
+  if (tolower(distribution) == "bernoulli" & (is.atomic(column) == TRUE & length(column)>1 & is.numeric(column)) & isTRUE(all(column == floor(column))) & isTRUE(all(column>=0)) & !isTRUE(all(column == 0 | column ==1))) stop("Column vector for bernoulli must only contain 0's and 1's")
 
 
 

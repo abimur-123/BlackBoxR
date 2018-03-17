@@ -1,7 +1,7 @@
 context('getCredibleInterval.R')
 
 
-#sample 
+#sample
 set.seed(1)
 sample<-rnorm(5,mean=4,sd=1)
 
@@ -30,8 +30,8 @@ test_that('the output has two elements only',{
 
 
 test_that('the output interval is correct',{
-  expected_lower<-2.584653
-  expected_upper<-4.544617
+  expected_lower<-3.614398
+  expected_upper<-4.267719
   expect_true(abs(getCredibleInterval(sample,c(3,1),c(4,1))[1]-expected_lower)<1e-5)
   expect_true(abs(getCredibleInterval(sample,c(3,1),c(4,1))[2]-expected_upper)<1e-5)
 })
@@ -39,4 +39,3 @@ test_that('the output interval is correct',{
 
 
 
-  

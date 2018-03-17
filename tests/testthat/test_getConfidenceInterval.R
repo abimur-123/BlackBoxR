@@ -2,7 +2,8 @@ context('getConfidenceInterval.R')
 
 #sample vector
 sample<-c(1,3,4,5)
-
+expected_lower<-1.576331
+expected_upper<-4.923668
 
 #check valid input
 test_that("check if input is in correct format",{
@@ -32,8 +33,7 @@ test_that('the output interval is valid',{
 })
 
 test_that('the output interval is correct',{
-  expected_lower<-1.576331
-  expected_upper<-4.923668
+
   expect_true(abs(getConfidenceInterval(sample)[1]-expected_lower)<1e-5)
   expect_true(abs(getConfidenceInterval(sample)[2]-expected_upper)<1e-5)
 })

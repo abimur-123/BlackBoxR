@@ -35,7 +35,9 @@ performABTest <- function(inp_data, alpha = 0.05){
     stop("Need at least 20 rows as input")
   }
 
-
+  # Shuffle the dataframe. This is done so that when Fisher's test is run both events
+  # have an equal chance of finding it
+  inp_data <- inp_data[sample(nrow(inp_data)),]
 
   size <- nrow(inp_data)
   # Computing p-values after every observation to prove why it's wrong
@@ -49,6 +51,7 @@ performABTest <- function(inp_data, alpha = 0.05){
     for (i in 1500:size) {
       data <- table(inp_data[1:i,])
 
+      ## Check if rows obatined have 2 levels or not
       if(nlevels(inp_data$name[1:i]) == 2) {
         test_val <- data.frame(index = i,
                                p_val = chisq.test(data)$p.value
@@ -56,11 +59,12 @@ performABTest <- function(inp_data, alpha = 0.05){
         op <- rbind(op,test_val)
       }
     }
-  } else {
+  } else if (size <= 2000) {
     method <- "Fishers"
     for (i in 20:size) {
         data <- table(inp_data[1:i,])
 
+        ## Check if rows obatined have 2 levels or not
         if(nlevels(inp_data$name[1:i]) == 2) {
           test_val <- data.frame(index = i,
                                  p_val = fisher.test(data)$p.value

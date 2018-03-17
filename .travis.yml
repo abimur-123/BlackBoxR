@@ -9,3 +9,9 @@ language: r
 warnings_are_errors: false
 install:
   - Rscript Installations.R
+
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'library(covr); codecov()'

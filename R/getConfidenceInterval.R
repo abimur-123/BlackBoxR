@@ -4,13 +4,8 @@
 #' @param vector a numeric vector
 #'
 #' @return vector a numeric vector with two elements only
-#' 
-#' @examples 
-#' 
-#' #example with toy samples
-#' sample<-c(1,2,3,4,3,2,6)
-#' getConfidenceInterval(sample)
-#' 
+#'
+#'
 #' @export
 getConfidenceInterval<-function(vector){
   xbar<-mean(vector)
@@ -20,6 +15,6 @@ getConfidenceInterval<-function(vector){
   upper<-xbar+1.96*(sd/sqrt(n))
 
   return(c(lower,upper))
-  
+
 }
 

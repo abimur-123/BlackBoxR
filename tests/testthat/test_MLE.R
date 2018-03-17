@@ -21,8 +21,9 @@ test_that("error message occurs when input is not correct format", {
 
   expect_error(getMLE("poisson",c(-2,3.3,2.4,-5)),"Column vector must only contain positive integer values")
 
-})
+  expect_error(getMLE("bernoulli",c(0,1,2,1,0)),"Column vector for bernoulli must only contain 0's and 1's")
 
+})
 
 test_that("when the input is not from available set of inputs", {
   expect_error(getMLE("binomial",c(2,3,4,6)),"Input values for distribution can only take in values; Bernoulli and Poisson")

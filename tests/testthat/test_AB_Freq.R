@@ -2,6 +2,7 @@ context('performABTest.R')
 
 library(BlackBoxR)
 library(testthat)
+library(ggplot2)
 
 test_that("check if input is in correct format",{
   df<-data.frame(name=rep(c('A','B'),1),events=rbinom(2,1,0.5))

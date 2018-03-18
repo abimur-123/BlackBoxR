@@ -7,6 +7,15 @@
 2. Yinghua Guan(@vinverguan)
 3. Abishek Murali(@abimur-123)
 
+### Installation
+
+To install please execute the following in R:
+```
+devtools::load_all()
+
+devtools::install_github("UBC-MDS/BlackBoxR",build_vignettes = TRUE)
+```
+
 ### Summary
 
 The Bayesian vs Frequentist approach is more of a philosophical debate which this package will not delve into. This package attempts at breaking down the understanding and the underlying assumptions of the 2 approaches and how they compare. The package will run a significance analysis using both approaches based on data provided by the user, compare credible and confidence intervals and finally debunks the understanding of MAP and MLE for parameter estimation.
@@ -69,7 +78,7 @@ A/B testing is an experiment with 2 versions - A and B. It is a two sample hypot
 `performABTest(data,alpha = 0.05)`
 
 ##### Parameters
-- data: input dataframe with 2 columns: name and event. Name consists of the A and B values one is trying to test and event consists of the outcome of the event(0 or 1).
+- data: input dataframe with 2 columns: name and event. Name consists of the A and B values(2 website pages) and event consists of the outcome of the event(0 or 1). This dataframe should have at least 20 rows to be able to perform AB tests.
 - alpha: This defines the false positive rate while testing. Default value is **0.05**
 
 **Example**   
@@ -106,7 +115,15 @@ poisson_column <- c(0,1,2,3,1,2,3,9,6,10,11)
 getMLE("poisson",poisson_column)
 ```
 
+### Bayesian approach
+
+This is work in progress.
+
+After completion one would be able to perform
+
+1. AB testing using the Bayesian approach
+2. Get Maximum A Priori estimate(MAP)
 
 ### Similar Packages
 
-The [BayesAB package](https://cran.r-project.org/web/packages/bayesAB/index.html) does AB testing using Bayesian approach with different distributions.
+The [BayesAB package](https://cran.r-project.org/web/packages/bayesAB/index.html) does AB testing using Bayesian approach with different distributions. The `prop.test` function in R performs proportion tests in R.
